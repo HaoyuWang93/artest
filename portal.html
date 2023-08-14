@@ -8,18 +8,21 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
-<script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
-<script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
+<script src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
+<script src='js/aframe-portal-door.js'></script>
 </head>
 
 <body style="margin: 0; overflow: hidden;">
-  <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false'
-  renderer='antialias: true; alpha: true'>
-    <a-camera gps-new-camera rotation-reader></a-camera>
-    <a-box color="red" opacity="1" width="5" depth="5" height="50"
-      gps-new-entity-place="latitude: 42.14904060158909; longitude: 24.751462574948192;"
-      animation__flash="property: opacity; to: 0; dur: 1500; dir: alternate; loop: true"
-    ></a-box>
+  <div style='position: fixed; top: 10px; width:100%; text-align: center; z-index: 1;'>
+  		<a href="https://github.com/jeromeetienne/AR.js/" target="_blank">AR.js</a> Test AR Portal</a>
+  	</div>
+
+  <a-scene arjs='trackingMethod: best;'>
+    <a-anchor hit-testing-enabled='true'>
+      <a-portal-door url='image/greenstand.jpg' position='0 0 0' rotation='0 90 0'><a-portal-door>
+    </a-anchor>
+
+    <a-camera-static/>
   </a-scene>
 </body>
 
