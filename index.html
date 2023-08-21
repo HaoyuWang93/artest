@@ -16,6 +16,16 @@
         }, {once: true})
       }
     })
+
+    AFRAME.registerComponent("play", {
+init: function() {
+ var pieces = document.querySelectorAll(".dialogue")
+ this.el.addEventListener("click", e => {
+   for (let piece of pieces) {
+     piece.emit("textoff")}
+ }, {once: true})
+}
+})
   </script>
 
 <body>
@@ -43,9 +53,19 @@ loading-screen="dotsColor: white; backgroundColor: black">
   <a-sky src="#tepe" rotation="0 -90 0"></a-sky>
 
   <a-image class="clickable" id="control" src="#button"
-  position="0 1.6 -3" scale="3 3 3" opacity="1" scale="1"
+  position="0 1.6 -3" scale="1" opacity="1" scale="1" opacity="1"
+  animation__flash="property: opacity; to: 0.5; dur: 1500; dir: alternate; loop: true"
   animation__off="startEvents: click; property: scale; to: 0; dur: 100"
-  playstart></a-image>
+  playstart
+  play></a-image>
+
+  <a-text class="dialogue" value="Rotate the Web-VR scene
+  to synchronize your view,
+  then tap the play button" color="black" align="center"
+  width="3" position="0 2.4 -3" scale="1" opacity="1"
+  animation__flash="property: opacity; to: 0.25; dur: 1500; dir: alternate; loop: true"
+  animation__off="startEvents: textoff; property: scale; to: 0; dur: 100">
+  </a-text>
 
 </a-scene>
 
