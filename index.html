@@ -1,31 +1,37 @@
-
 <!doctype html>
 <html>
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Plovdiv AR-Portal</title>
-<script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
-<script src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
+  <title>Džambaz Tepe</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="aframe\aframe.min.js"></script>
+
+<body>
+
 <style>
+div.a-enter-ar {
+  visibility: hidden;
+}
 div.a-enter-vr {
   visibility: hidden;
 }
 </style>
 
-<body style='margin : 0px; overflow: hidden;'>
-  <a-scene  raycaster="objects: .clickable" cursor="rayOrigin: mouse; fuse: false;"
-  loading-screen="dotsColor: white; backgroundColor: black"
-  embedded arjs="sourceType: webcam; trackingMethod: best; debugUIEnabled: false">
 
-    <a-assets>
-        <img id="2020" src="image/2020.jpg">
-      </a-assets>
+  <a-assets>
+    <video id="sky" autoplay loop preload src="video/d-Tepe.mp4"
+    playsinline webkit-playsinline></video>
+  </a-assets>
 
-  <a-marker type="pattern" url="marker/pattern-head.patt">
-    <a-link class="clickable" href="portal.html" title="CLICK" image="#2020"
-    position="0 1.6 0" scale="10"></a-link>
-  </a-marker>
-  <a-camera-static/>
-  </a-scene>
+  <a-scene raycaster="objects: .clickable" cursor="rayOrigin: mouse; fuse: false;"
+  loading-screen="dotsColor: white; backgroundColor: black">
+
+  <a-camera look-controls wasd-controls-enabled="false"></a-camera>
+
+  <a-sky src="#sky" rotation="0 90 0"></a-sky>
+
+</a-scene>
+
 </body>
+</html
