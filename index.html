@@ -7,6 +7,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
 
+  <script>
+    AFRAME.registerComponent("playstart", {
+      init: function () {
+        var myVideo = document.querySelector("#tepe");
+        this.el.addEventListener("click", function () {
+            myVideo.play();
+        }, {once: true})
+      }
+    })
+  </script>
+
 <body>
 
 <style>
@@ -18,20 +29,25 @@ div.a-enter-vr {
 }
 </style>
 
+<a-scene  raycaster="objects: .clickable"
+cursor="rayOrigin: mouse; fuse: true; fuse-timeout: 10"
+loading-screen="dotsColor: white; backgroundColor: black">
+  <a-camera wasd-controls-enabled="false"></a-camera>
 
   <a-assets>
-    <video id="sky" autoplay loop preload src="video/d-Tepe.mp4"
+    <video id="tepe" loop="true" preload src="video/d-Tepe.mp4"
     playsinline webkit-playsinline></video>
+    <img id="button" src="image/playcir.png">
   </a-assets>
 
-  <a-scene raycaster="objects: .clickable" cursor="rayOrigin: mouse; fuse: false;"
-  loading-screen="dotsColor: white; backgroundColor: black">
+  <a-sky src="#tepe" rotation="0 -90 0"></a-sky>
 
-  <a-camera look-controls wasd-controls-enabled="false"></a-camera>
-
-  <a-sky src="#sky" rotation="0 -90 0"></a-sky>
+  <a-image class="clickable" id="control" src="#button"
+  position="0 1.6 -3" scale="3 3 3" opacity="1" scale="1"
+  animation__off="startEvents: click; property: scale; to: 0; dur: 100"
+  playstart></a-image>
 
 </a-scene>
 
 </body>
-</html
+</html>
