@@ -6,7 +6,20 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="css/custom.css">
 
+  <div style='position: fixed;
+  top: 15px;
+  left: 20px;
+  width:100%;
+  text-align: left;
+  z-index: 1;'>
+    <a href="https://haoyuwang93.github.io/portfolio/plovdiv.html"
+    target="_blank" rel="noopener noreferrer"><button class="button">CONCEPT</button></a>
+  </div>
+
+</head>
   <script>
     AFRAME.registerComponent("playstart", {
       init: function () {
@@ -59,9 +72,9 @@ loading-screen="dotsColor: white; backgroundColor: black">
   playstart
   play></a-image>
 
-  <a-text class="dialogue" value="Rotate the Web-VR scene
-  to synchronize your view,
-  then tap the play button" color="black" align="center"
+  <a-text class="dialogue" value="If you are on site at the Dzambaz Tepe,
+  rotate the scene with fingers to match your view
+  before tapping the play button" color="black" align="center"
   width="3" position="0 2.4 -3" scale="1" opacity="1"
   animation__flash="property: opacity; to: 0.25; dur: 1000; dir: alternate; loop: true"
   animation__off="startEvents: textoff; property: scale; to: 0; dur: 100">
