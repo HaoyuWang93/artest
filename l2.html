@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Džambaz Tepe</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="css/custom.css">
+
+  <div style='position: fixed;
+  top: 15px;
+  left: 20px;
+  width:100%;
+  text-align: left;
+  z-index: 1;'>
+    <a href="https://haoyuwang93.github.io/portfolio/plovdiv.html"
+    target="_blank" rel="noopener noreferrer"><button class="button">CONCEPT</button></a>
+  </div>
+
+</head>
+  <script>
+    AFRAME.registerComponent("playstart", {
+      init: function () {
+        var myVideo = document.querySelector("#tepe");
+        this.el.addEventListener("click", function () {
+            myVideo.play();
+        }, {once: true})
+      }
+    })
+
+    AFRAME.registerComponent("play", {
+init: function() {
+ var pieces = document.querySelectorAll(".dialogue")
+ this.el.addEventListener("click", e => {
+   for (let piece of pieces) {
+     piece.emit("textoff")}
+ }, {once: true})
+}
+})
+  </script>
+
+<body>
+
+<style>
+div.a-enter-ar {
+  visibility: hidden;
+}
+div.a-enter-vr {
+  visibility: hidden;
+}
+</style>
+
+<a-scene  raycaster="objects: .clickable"
+cursor="rayOrigin: mouse; fuse: true; fuse-timeout: 10"
+loading-screen="dotsColor: white; backgroundColor: black">
+  <a-camera wasd-controls-enabled="false"></a-camera>
+
+  <a-assets>
+    <video id="tepe" loop="true" preload src="video/l2.mp4"
+    playsinline webkit-playsinline></video>
+    <img id="button" src="image/playcir.png">
+  </a-assets>
+
+  <a-sky src="#tepe" rotation="0 -90 0"></a-sky>
+
+  <a-image class="clickable" id="control" src="#button"
+  position="0 1.6 -3" scale="1" opacity="1" scale="1" opacity="1"
+  animation__flash="property: opacity; to: 0.25; dur: 1000; dir: alternate; loop: true"
+  animation__off="startEvents: click; property: scale; to: 0; dur: 100"
+  playstart
+  play></a-image>
+
+  <a-text class="dialogue" value="Drag the scene to match your view
+  before tapping the play button" color="black" align="center"
+  width="3" position="0 2.4 -3" scale="1" opacity="1"
+  animation__flash="property: opacity; to: 0.25; dur: 1000; dir: alternate; loop: true"
+  animation__off="startEvents: textoff; property: scale; to: 0; dur: 100">
+  </a-text>
+
+</a-scene>
+
+</body>
+</html>
