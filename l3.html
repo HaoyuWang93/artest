@@ -66,7 +66,8 @@ loading-screen="dotsColor: white; backgroundColor: black">
   <a-sky src="#tepe" rotation="0 -90 0"></a-sky>
 
   <a-image class="clickable" id="control" src="#button"
-  position="0 1.6 -3" scale="1" opacity="1" scale="1" opacity="1"
+  position="0 1.6 -3" scale="0" opacity="1" scale="0" opacity="1"
+  animation__on="property: scale; to: 1; dur: 100; delay: 2500"
   animation__flash="property: opacity; to: 0.25; dur: 1000; dir: alternate; loop: true"
   animation__off="startEvents: click; property: scale; to: 0; dur: 100"
   playstart
@@ -79,6 +80,19 @@ loading-screen="dotsColor: white; backgroundColor: black">
   animation__off="startEvents: textoff; property: scale; to: 0; dur: 100">
   </a-text>
 
+  <a-text value="Web-VR Scene Loading..." color="white" align="center"
+  width="3" position="0 2.8 -2.5" scale="1" opacity="1"
+  animation__flash="property: opacity; to: 0.25; dur: 1000; dir: alternate; loop: true"
+  animation__off="property: scale; to: 0; dur: 100; delay: 5000">
+  </a-text>
+
+  <a-text value="A Context AiR project
+
+  Supported by the Municipality of Plovdiv
+  
+  Haoyu Wang, 2023" color="black" align="center"
+  width="3" position="0 0 0" rotation="-90 0 0" scale="1" opacity="1">
+  </a-text>
 </a-scene>
 
 </body>
